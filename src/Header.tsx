@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react';
 import './Header.css';
 
-const Header = ({ theme, toggleTheme, showTrail, toggleTrail }) => {
+
+interface HeaderProps {
+  theme: string;           // 'light' o 'dark'
+  toggleTheme: () => void; // Una función que no devuelve nada
+  showTrail: boolean;      // true o false
+  toggleTrail: () => void; // Una función que no devuelve nada
+}
+
+const Header = ({ theme, toggleTheme, showTrail, toggleTrail }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
