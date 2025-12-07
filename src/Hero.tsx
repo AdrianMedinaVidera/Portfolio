@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="avatar-wrapper">
         <img 
           src="src/assets/Logo-Draw-nobg.webp" 
-          alt="Eduardo RL Avatar" 
+          alt="Avatar" 
           className="avatar-img"
         />
       </div>
