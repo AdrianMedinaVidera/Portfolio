@@ -17,7 +17,7 @@ const Hero = () => {
           Soy un desarrollador apasionado por el backend.
         </p>
         
-        <button className="status-button">
+        <a className="status-button" href='public/cv.pdf' download={"AdrianMedinaVidera_CV"}>
           Descarga mi CV
           <svg 
             className="icon-download-svg"
@@ -41,7 +41,7 @@ const Hero = () => {
               />
             </g>
           </svg>
-        </button>
+        </a>
       </div>
     </section>
   );
