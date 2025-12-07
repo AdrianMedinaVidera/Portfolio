@@ -49,7 +49,7 @@ function App() {
         <Contact />
         
         <footer style={{ textAlign: 'center', color: 'var(--text-secondary)', padding: '2rem 0', fontSize: '0.9rem' }}>
-          © {new Date().getFullYear()} Adrián Medina Videra
+          Adrián Medina Videra
         </footer>
       </main>
     </div>
