@@ -19,7 +19,7 @@ const Hero = () => {
           Soy un desarrollador apasionado por el backend.
         </p>
         
-        <a className="status-button" href='public/cv.pdf' download={"AdrianMedinaVidera_CV"}>
+        <a className="status-button" href='public/cv.pdf' download={"public/cv.pdf"}>
           Descarga mi CV
           <svg 
             className="icon-download-svg"
