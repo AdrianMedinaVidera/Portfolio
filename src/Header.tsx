@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Header.css';
-
+import myAvatar from './assets/Logo-Draw-nobg.webp';
 
 interface HeaderProps {
   theme: string;           // 'light' o 'dark'
@@ -31,7 +31,7 @@ const Header = ({ theme, toggleTheme, showTrail, toggleTrail }: HeaderProps) => 
         
         <div className="header-left">
           <img 
-            src="src/assets/Logo-Draw-nobg.png" 
+            src={myAvatar} 
             alt="Mini Avatar" 
             className="header-avatar"
           />

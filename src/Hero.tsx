@@ -1,11 +1,13 @@
 import './Hero.css';
+import myAvatar from './assets/Logo-Draw-nobg.webp';
+
 
 const Hero = () => {
   return (
     <section className="hero-container">
       <div className="avatar-wrapper">
         <img 
-          src="src/assets/Logo-Draw-nobg.png" 
+          src={myAvatar}
           alt="Avatar" 
           className="avatar-img"
         />
