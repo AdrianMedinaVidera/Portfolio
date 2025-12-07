@@ -1,0 +1,33 @@
+/* CursorTrail.css */
+
+.cursor-trail-container {
+    /* Asegura que no interfiera con el layout */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* CRUCIAL: Permite hacer click a través de la estela */
+    z-index: 9999; /* Por encima de todo */
+    overflow: hidden;
+  }
+  
+  .trail-circle {
+    position: absolute;
+    width: 8px; /* Tamaño de la cabeza de la estela */
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-green); /* Usa el verde de tu tema */
+    /* Si prefieres blanco, usa: background-color: var(--text-primary); */
+    
+    /* Centramos el div en el cursor */
+    transform-origin: center center;
+    margin-left: -4px; /* Mitad del width */
+    margin-top: -4px; /* Mitad del height */
+    
+    /* Opcional: Un poco de blur para que parezca luz */
+    /* filter: blur(1px); */
+    
+    opacity: 0.6; /* Un poco transparente */
+    transition: background-color 0.3s ease; /* Para cambiar de color suavemente si cambias de tema */
+  }

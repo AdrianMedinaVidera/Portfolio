@@ -1,0 +1,135 @@
+/* Header.css */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background-color: transparent; /* Invisible al inicio */
+  padding: 1.5rem 0;
+  /* Borde inferior invisible al inicio */
+  border-bottom: 1px solid transparent; 
+}
+
+/* --- ESTADO SCROLLED (Cuando bajamos) --- */
+.header.scrolled {
+  /* Fondo con opacidad y blur */
+  background-color: rgba(var(--bg-rgb), 0.85); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.8rem 0; /* Se hace un poco más fino */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 800px; /* Alineado con tu contenido */
+  padding: 0 2rem;
+  margin: 0 auto; /* Centrado horizontal */
+  display: flex;
+  justify-content: space-between; /* Uno a cada extremo */
+  align-items: center;
+}
+
+/* --- LADO IZQUIERDO (Avatar + Nombre) --- */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  
+  /* ESTADO INICIAL: Oculto y desplazado ligeramente hacia arriba */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none; /* Para no hacer click sin querer cuando no se ve */
+  transition: all 0.3s ease;
+}
+
+/* Cuando hay scroll, hacemos visible la parte izquierda */
+.header.scrolled .header-left {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--text-primary); /* Borde sutil */
+}
+
+.header-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* --- LADO DERECHO (Theme Toggle) --- */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  /* El botón siempre es visible, incluso sin scroll */
+}
+
+.theme-toggle:hover {
+  background-color: rgba(128, 128, 128, 0.15);
+}
+
+.header-inner {
+  /* Asegúrate de que siga siendo flex */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* ... resto ... */
+}
+
+/* Nuevo contenedor para los botones de la derecha */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre la varita y la luna/sol */
+}
+
+/* Renombramos .theme-toggle a una clase más genérica .icon-btn 
+   para usarla en ambos botones */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.icon-btn:hover {
+  background-color: rgba(128, 128, 128, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Clase para controlar el tamaño del SVG */
+.header-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* OPCIONAL: Estilo para cuando la estela está activa */
+.icon-btn.active {
+  color: var(--accent-green); /* Se pone verde cuando está activado */
+  /* Opcional: fondo sutil */
+  background-color: rgba(16, 185, 129, 0.1); 
+}

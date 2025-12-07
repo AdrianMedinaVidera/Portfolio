@@ -1,0 +1,251 @@
+/* Projects.css */
+
+.projects-section {
+    width: 100%;
+    padding-bottom: 4rem;
+  }
+  
+  /* Reutilizamos estilos del título de Experience si quieres, 
+     o los definimos aquí para asegurar */
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .icon-user-svg {
+    width: 32px;  /* Ajustado un poco para este SVG específico */
+    height: 32px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: sub; /* Alineación vertical fina */
+  }
+  
+  /* --- ESTILOS FEATURED (Grandes) --- */
+  .featured-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Espacio entre proyectos grandes */
+    margin-bottom: 3rem;
+  }
+  
+  .featured-card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  /* Contenedor de Imagen */
+  .project-image-container {
+    flex-shrink: 0;
+    width: 280px; /* Ancho fijo para la imagen como en el diseño */
+    height: 185px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #1f2937; /* Color de fondo mientras carga */
+  }
+  
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #374151; /* Placeholder gris oscuro */
+    /* Aquí pondrías: background-image: url(...) cuando tengas fotos */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Contenido Derecha */
+  .project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Iconos Tech */
+  .tech-stack {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .tech-icon-placeholder {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px; /* Un poco cuadrado como los iconos de React/TS */
+    background-color: var(--text-secondary);
+    opacity: 0.5; /* Simula iconos grises/desactivados */
+  }
+  
+  /* Botones */
+  .project-buttons {
+    display: flex;
+    gap: 0.8rem;
+  }
+  
+  .btn-project {
+    background-color: var(--bg-reverse);
+    color: var(--text-reverse);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: opacity 0.2s;
+  }
+
+  .icon-link-svg {
+    width: 30px;
+    height: auto;
+    padding: 0;
+  }
+  
+  .btn-project:hover {
+    opacity: 0.85;
+  }
+  
+  .icon-link {
+    font-size: 0.9em;
+  }
+  
+  /* --- ESTILOS SMALL GRID (Pequeños) --- */
+  .small-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 Columnas exactas */
+    gap: 1rem;
+  }
+  
+  .small-card {
+    /* Borde sutil gris, clave del diseño */
+    border: 2px solid var(--card-border); 
+    border-radius: 12px;
+    padding: 1.25rem;
+    background-color: transparent;
+    transition: transform 0.2s, border-color 0.2s;
+    transition: box-shadow 1000ms ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .small-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow) 0px 50px 100px -20px, var(--shadow) 0px 30px 60px -30px, var(--shadow) 0px -2px 6px 0px inset;
+  }
+  
+  .small-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .small-card-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Empuja los iconos hacia abajo */
+  }
+  
+  .small-stack .tech-icon-placeholder {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Projects.css */
+
+.tech-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-svg-wrapper svg {
+  width: 28px;   /* Tamaño del icono */
+  height: 28px;
+  display: block;
+  /* IMPORTANTE: No ponemos fill: currentColor aquí 
+     para respetar los colores originales del SVG */
+  transition: transform 0.2s ease;
+}
+
+.tech-svg-wrapper svg:hover {
+  transform: translateY(-2px); /* Un pequeño salto al pasar el ratón */
+}
+
+/* Estilo para tecnologías que no tengan icono aún (Fallback) */
+.tech-text-fallback {
+  font-size: 0.75rem;
+  background-color: var(--avatar-border);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+/* Projects.css */
+
+/* Estilos para el contenedor del icono en el grid pequeño */
+.tech-icon-container-small {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* O center, según tu diseño */
+  padding: 0 4px;
+}
+
+/* Estilos para el SVG dentro del contenedor pequeño */
+.tech-svg-wrapper-small svg {
+  width: 20px; /* Tamaño reducido para el grid */
+  height: 20px;
+  display: block;
+}
+
+/* Estilo para el texto de fallback en el grid pequeño */
+.tech-text-fallback-small {
+  font-size: 0.65rem;
+  background-color: var(--avatar-border);
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: var(--text-secondary);
+}
+  
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    /* En tablets/móviles, los grandes se apilan verticalmente */
+    .featured-card {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .project-image-container {
+      width: 100%; /* Imagen ancho completo */
+      height: 200px;
+    }
+  
+    /* El grid pequeño pasa a 1 columna en móviles muy pequeños */
+    @media (max-width: 500px) {
+      .small-projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }

@@ -1,0 +1,81 @@
+/* Experience.css */
+.experience-section {
+    width: 100%;
+    text-align: left; /* Aseguramos alineación a la izquierda */
+    padding-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-top: 1px dotted var(--border);
+    padding-top: 3rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .job-item {
+    margin-bottom: 2rem;
+  }
+  
+  .job-header {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 400; /* Base normal */
+  }
+  
+  .job-role {
+    font-weight: 700; /* Negrita para el puesto */
+  }
+  
+  .separator {
+    margin: 0 0.5rem;
+    opacity: 0.6;
+  }
+  
+  .job-company {
+    font-weight: 400; /* Normal para la empresa */
+  }
+  
+  /* Estilos de la lista */
+  .job-list {
+    list-style-type: disc;
+    padding-left: 1.2rem; /* Espacio para los bullets */
+    color: var(--text-secondary); /* Color grisáceo del texto */
+  }
+  
+  .job-list li {
+    margin-bottom: 0.6rem; /* Separación entre items */
+    line-height: 1.6; /* Altura de línea para buena lectura */
+    font-size: 1rem;
+  }
+
+  .title-icon-svg {
+    width: 32px;  
+    height: 32px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: sub; 
+    
+    color: var(--svg-color);
+  }
+  
+  /* Ajuste Responsive para que el título no se rompa feo en móvil */
+  @media (max-width: 600px) {
+    .job-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .separator {
+      display: none; /* Ocultamos el punto en móviles */
+    }
+  }

@@ -1,0 +1,125 @@
+/* Contact.css */
+.contact-section {
+    width: 100%;
+    padding-bottom: 4rem;
+  }
+  
+  .contact-group {
+    margin-bottom: 3rem;
+  }
+  
+  /* --- SOCIALS --- */
+  .socials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.2rem;
+    background-color: rgba(255, 255, 255, 0.03); /* Fondo muy sutil */
+    border: 1px solid var(--avatar-border);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  .social-btn:hover {
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  
+  .social-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Colores específicos de marca (texto) */
+  .social-btn.linkedin { color: #0077b5; }
+  .social-btn.github { color: var(--github) }
+  .social-btn.twitter { color: #1DA1F2; }
+  .social-btn.dribbble { color: #EA4C89; }
+  
+  .social-btn svg {
+    width: 24px;  /* Tamaño estándar para iconos */
+    height: 24px;
+    flex-shrink: 0; /* Evita que se aplaste si el texto es largo */
+  }
+
+  .section-title > svg {
+    width: 32px;  /* Tamaño estándar para iconos */
+    height: 32px;
+    flex-shrink: 0;
+  }
+  
+  /* --- EMAIL INPUT --- */
+  .email-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  
+  .email-input {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--avatar-border); /* Borde sutil */
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  /* Para que parezca interactivo pero no editable */
+  .email-input:focus {
+    border-color: var(--text-secondary);
+  }
+  
+  .email-actions {
+    display: flex;
+    gap: 0.8rem;
+  }
+  
+  .action-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6366f1; /* El morado/indigo de la imagen */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    text-decoration: none; /* Para el <a> mailto */
+    transition: background-color 0.2s, transform 0.2s;
+  }
+
+  .action-btn > svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .action-btn:hover {
+    background-color: #4f46e5; /* Un poco más oscuro al pasar */
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive: En móviles el input y botones se apilan si no caben */
+  @media (max-width: 500px) {
+    .email-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .email-actions {
+      justify-content: flex-end;
+    }
+  }

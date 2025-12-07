@@ -1,0 +1,93 @@
+/* Hero.css */
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Espacio entre imagen y texto */
+    margin-bottom: 4rem; /* Espacio antes de la siguiente sección */
+    margin-top: 5rem;
+  }
+  
+  /* Estilo del Avatar */
+  .avatar-wrapper {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: #ffffff14; /* El anillo oscuro alrededor */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Sombra sutil para dar profundidad como en la imagen */
+    box-shadow: 0 5px 10px -3px var(--shadow); 
+  }
+  
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #647893; /* Borde interno del mismo color del fondo */
+  }
+  
+  /* Estilos de Texto */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .hero-name {
+    font-size: 2.5rem; /* Letra grande y gruesa */
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  
+  /* Botón Verde */
+  .status-button {
+    background-color: var(--accent-green);
+    color: #fff; /* Siempre blanco, incluso en modo claro */
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px; /* Bordes redondeados pero no pastilla completa */
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s, opacity 0.2s;
+    font-family: inherit;
+  }
+
+  .status-button > svg {
+    width: 20px;
+    height: auto;
+  }
+  
+  .status-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  /* Responsive: En móviles se pone uno encima de otro */
+  @media (max-width: 640px) {
+    .hero-container {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    
+    .hero-content {
+      align-items: center;
+    }
+  }
