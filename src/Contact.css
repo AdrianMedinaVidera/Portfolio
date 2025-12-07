@@ -111,6 +111,60 @@
     background-color: #4f46e5; /* Un poco más oscuro al pasar */
     transform: translateY(-2px);
   }
+
+  .toast-notification {
+    position: fixed;
+    bottom: 2rem;       /* Separación del fondo */
+    left: 50%;          /* Centrado horizontal */
+    transform: translateX(-50%) translateY(100px); /* Empieza abajo (oculto) */
+    
+    background-color: rgba(30, 41, 59, 0.9); /* Fondo oscuro semitransparente */
+    backdrop-filter: blur(10px);             /* Efecto Blur */
+    border: 1px solid var(--avatar-border);  /* Mismo borde que tus tarjetas */
+    
+    color: var(--text-primary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px; /* Bordes muy redondos (estilo pastilla) */
+    font-size: 0.95rem;
+    font-weight: 500;
+    
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+    z-index: 2000; /* Para que salga encima de todo */
+    
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote suave */
+    pointer-events: none; /* Para no bloquear clicks cuando es invisible */
+  }
+
+  .toast-notification > svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Clase que se activa cuando copied es true */
+  .toast-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Sube a su posición */
+  }
+  
+  .toast-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px; /* Separación del texto */
+    display: block;
+  }
+  /* Ajuste para móvil para que no quede pegado a los bordes */
+  @media (max-width: 600px) {
+    .toast-notification {
+      width: 90%; /* Más ancho en móvil */
+      justify-content: center;
+      bottom: 1.5rem;
+    }
+  }
   
   /* Responsive: En móviles el input y botones se apilan si no caben */
   @media (max-width: 500px) {

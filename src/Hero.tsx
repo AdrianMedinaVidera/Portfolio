@@ -1,8 +1,10 @@
+import { useLanguage } from './LanguageContext'; // <--- Importamos el hook
 import './Hero.css';
 import myAvatar from './assets/Logo-Draw-nobg.webp';
 
-
 const Hero = () => {
+  const { t } = useLanguage(); // <--- Extraemos las traducciones
+
   return (
     <section className="hero-container">
       <div className="avatar-wrapper">
@@ -15,12 +17,15 @@ const Hero = () => {
 
       <div className="hero-content">
         <h1 className="hero-name">Adrián Medina</h1>
+        
+        {/* TEXTO TRADUCIDO */}
         <p className="hero-description">
-          Soy un desarrollador apasionado por el backend.
+          {t.hero_desc}
         </p>
         
-        <a className="status-button" href='public/cv.pdf' download={"public/cv.pdf"}>
-          Descarga mi CV
+        {/* TEXTO TRADUCIDO */}
+        <a className="status-button" href='/cv.pdf' download="Adrian_Medina_CV.pdf">
+          {t.hero_btn}
           <svg 
             className="icon-download-svg"
             viewBox="0 0 24 24" 

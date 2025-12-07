@@ -1,14 +1,16 @@
 import { useState } from 'react';
+import { useLanguage } from './LanguageContext';
 import './Contact.css';
 
 const Contact = () => {
+  const { t } = useLanguage(); // <--- Hook
   const email = "adrianmedinavidera@gmail.com";
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
     setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -16,8 +18,8 @@ const Contact = () => {
       
       <div className="contact-group">
         <h2 className="section-title">
-          Socials 
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {t.contact_socials}
+          <svg className="title-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path 
               opacity="0.5" 
               d="M3.46447 3.46447C2 4.92893 2 7.28595 2 12C2 16.714 2 19.0711 3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12C22 7.28595 22 4.92893 20.5355 3.46447C19.0711 2 16.714 2 12 2C7.28595 2 4.92893 2 3.46447 3.46447Z" 
@@ -33,7 +35,7 @@ const Contact = () => {
         </h2>
         
         <div className="socials-grid">
-          <a href="www.linkedin.com/in/adrianmedinavidera" className="social-btn linkedin">
+          <a href="https://www.linkedin.com/in/adrianmedinavidera/" className="social-btn linkedin" target="_blank">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 48 48" 
@@ -45,7 +47,7 @@ const Contact = () => {
             LinkedIn
           </a>
 
-          <a href="https://github.com/AdrianMedinaVidera" className="social-btn github">
+          <a href="https://github.com/AdrianMedinaVidera" className="social-btn github" target="_blank">
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 30 30"
@@ -60,8 +62,8 @@ const Contact = () => {
 
       <div className="contact-group">
         <h2 className="section-title">
-          Email 
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {t.contact_email}
+          <svg className="title-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path 
               opacity="0.5" 
               d="M14.2 3H9.8C5.65164 3 3.57746 3 2.28873 4.31802C1 5.63604 1 7.75736 1 12C1 16.2426 1 18.364 2.28873 19.682C3.57746 21 5.65164 21 9.8 21H14.2C18.3484 21 20.4225 21 21.7113 19.682C23 18.364 23 16.2426 23 12C23 7.75736 23 5.63604 21.7113 4.31802C20.4225 3 18.3484 3 14.2 3Z" 
@@ -138,6 +140,27 @@ const Contact = () => {
             </button>
           </div>
         </div>
+      </div>
+
+      <div className={`toast-notification ${copied ? 'show' : ''}`}>
+        {t.toast_copy}
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="toast-icon">
+          <path 
+            opacity="0.5" 
+            d="M21 15.9983V9.99826C21 7.16983 21 5.75562 20.1213 4.87694C19.3529 4.10856 18.175 4.01211 16 4H8C5.82497 4.01211 4.64706 4.10856 3.87868 4.87694C3 5.75562 3 7.16983 3 9.99826V15.9983C3 18.8267 3 20.2409 3.87868 21.1196C4.75736 21.9983 6.17157 21.9983 9 21.9983H15C17.8284 21.9983 19.2426 21.9983 20.1213 21.1196C21 20.2409 21 18.8267 21 15.9983Z" 
+            fill="currentColor"
+          />
+          <path 
+            d="M8 3.5C8 2.67157 8.67157 2 9.5 2H14.5C15.3284 2 16 2.67157 16 3.5V4.5C16 5.32843 15.3284 6 14.5 6H9.5C8.67157 6 8 5.32843 8 4.5V3.5Z" 
+            fill="currentColor"
+          />
+          <path 
+            fillRule="evenodd" 
+            clipRule="evenodd" 
+            d="M15.5483 10.4883C15.8309 10.7911 15.8146 11.2657 15.5117 11.5483L11.226 15.5483C10.9379 15.8172 10.4907 15.8172 10.2025 15.5483L8.48826 13.9483C8.18545 13.6657 8.16909 13.1911 8.45171 12.8883C8.73434 12.5855 9.20893 12.5691 9.51174 12.8517L10.7143 13.9741L14.4883 10.4517C14.7911 10.1691 15.2657 10.1855 15.5483 10.4883Z" 
+            fill="currentColor"
+          />
+        </svg>
       </div>
 
     </section>

@@ -1,61 +1,14 @@
 import React from 'react';
+import { useLanguage } from './LanguageContext';
 import './Projects.css';
 import escImg from './assets/esc.webp'; 
 import arghImg from './assets/ARGH.webp';
 import videoAPI from './assets/videogameAPI.webp';
 
-
-const Projects = () => {
-  const featuredProjects = [
-    {
-      title: 'Eurovision Carousel',
-      description: 'Aplicación web para mostrar un carrusel interactivo con información sobre Eurovisión.',
-      tech: ['React', 'TypeScript', 'Tailwind'],
-      links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/Eurovision-Carousel' }],
-      image: escImg
-    },
-    {
-      title: 'ARGH!',
-      description: 'Juego de Rol íntegro de terminal o consola de comandos con Java Vanilla.',
-      tech: ['Java'],
-      links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/-Argh-' }],
-      image: arghImg 
-    },
-    {
-      title: 'VideoGames-API',
-      description: 'API REST de videojuegos desarrollada en Java-SpringBoot.',
-      tech: ['Java', 'SpringBoot'],
-      links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/game_API' }],
-      image: videoAPI
-    }
-  ];
-
-  const otherProjects = [
-    {
-      title: 'Submarine-Animation',
-      description: 'Una animación de un submarino programada con CSS',
-      tech: ['HTML', 'CSS']
-    },
-    {
-      title: 'CS2 Tournament',
-      description: 'Aplicación web de un torneo de Counter Strike 2',
-      tech: ['HTML', 'CSS', 'JS']
-    },
-    {
-      title: 'EDA + Dashboard',
-      description: 'Un proyecto de un EDA y DASHBOARD con Python',
-      tech: ['python']
-    },
-    {
-      title: 'Videogames-Sales Analysis',
-      description: 'Un análisis de un dataset de ventas de videojuegos',
-      tech: []
-    }
-  ];
-
-const techIcons: { [key: string]: React.ReactNode } = {
+// Definimos los iconos fuera para no recargar el componente innecesariamente
+const techIcons: Record<string, React.ReactNode> = {
   React: (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 101 100"><path fill="#61DAFB" d="M50.307 58.816a8.816 8.816 0 1 0 0-17.632 8.816 8.816 0 0 0 0 17.632"/><path stroke="#61DAFB" stroke-width="5" d="M50.307 68.063c26.126 0 47.306-8.087 47.306-18.063s-21.18-18.062-47.306-18.062C24.18 31.938 3 40.024 3 50s21.18 18.063 47.307 18.063Z"/><path stroke="#61DAFB" stroke-width="5" d="M34.664 59.031C47.727 81.658 65.321 95.957 73.96 90.97c8.64-4.988 5.053-27.374-8.01-50C52.885 18.342 35.291 4.043 26.652 9.03s-5.052 27.374 8.011 50Z"/><path stroke="#61DAFB" stroke-width="5" d="M34.664 40.969c-13.063 22.626-16.65 45.012-8.01 50 8.638 4.988 26.232-9.311 39.295-31.938s16.65-45.012 8.01-50c-8.638-4.988-26.232 9.311-39.295 31.938Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 101 100"><path fill="#61DAFB" d="M50.307 58.816a8.816 8.816 0 1 0 0-17.632 8.816 8.816 0 0 0 0 17.632"/><path stroke="#61DAFB" strokeWidth="5" d="M50.307 68.063c26.126 0 47.306-8.087 47.306-18.063s-21.18-18.062-47.306-18.062C24.18 31.938 3 40.024 3 50s21.18 18.063 47.307 18.063Z"/><path stroke="#61DAFB" strokeWidth="5" d="M34.664 59.031C47.727 81.658 65.321 95.957 73.96 90.97c8.64-4.988 5.053-27.374-8.01-50C52.885 18.342 35.291 4.043 26.652 9.03s-5.052 27.374 8.011 50Z"/><path stroke="#61DAFB" strokeWidth="5" d="M34.664 40.969c-13.063 22.626-16.65 45.012-8.01 50 8.638 4.988 26.232-9.311 39.295-31.938s16.65-45.012 8.01-50c-8.638-4.988-26.232 9.311-39.295 31.938Z"/></svg>
   ),
   TypeScript: (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="#017ACB" d="M0 0h100v100H0z"/><path fill="#fff" d="M48.016 37.031h4.797v8.282h-12.97v36.843l-.343.094c-.469.125-6.64.125-7.969-.016l-1.062-.093V45.312H17.5v-8.28l4.11-.048c2.25-.03 8.03-.03 12.843 0 4.813.032 10.906.047 13.563.047m36.61 41.219c-1.907 2.016-3.954 3.14-7.36 4.063-1.485.406-1.735.421-5.078.406-3.344-.016-3.61-.016-5.235-.438-4.203-1.078-7.594-3.187-9.906-6.172-.656-.843-1.734-2.593-1.734-2.812 0-.063.156-.203.359-.297s.625-.36.969-.562c.343-.204.968-.579 1.39-.797.422-.22 1.64-.938 2.703-1.579 1.063-.64 2.032-1.156 2.141-1.156.11 0 .313.219.469.485.937 1.578 3.125 3.593 4.672 4.28.953.407 3.062.86 4.078.86.937 0 2.656-.406 3.578-.828.984-.453 1.484-.906 2.078-1.812.406-.641.453-.813.438-2.032 0-1.125-.063-1.437-.375-1.953-.875-1.437-2.063-2.187-6.875-4.312-4.97-2.203-7.204-3.516-9.016-5.282-1.344-1.312-1.61-1.67-2.453-3.312-1.094-2.11-1.235-2.797-1.25-5.937-.016-2.204.031-2.922.265-3.672.329-1.125 1.391-3.297 1.875-3.844 1-1.172 1.36-1.531 2.063-2.11 2.125-1.75 5.438-2.906 8.61-3.015.359 0 1.546.062 2.656.14 3.187.266 5.359 1.047 7.453 2.72 1.578 1.25 3.968 4.187 3.734 4.577-.156.235-6.39 4.391-6.797 4.516-.25.078-.422-.016-.765-.422-2.125-2.547-2.985-3.094-5.047-3.219-1.469-.093-2.25.078-3.235.735-1.03.687-1.53 1.734-1.53 3.187.015 2.125.827 3.125 3.827 4.61 1.938.953 3.594 1.734 3.719 1.734.188 0 4.203 2 5.25 2.625 4.875 2.86 6.86 5.797 7.375 10.86.375 3.812-.703 7.296-3.047 9.765"/></svg>
@@ -79,14 +32,68 @@ const techIcons: { [key: string]: React.ReactNode } = {
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="#F7DF1E" d="M100 0H0v100h100z"/><path fill="#000" d="M67.175 78.125c2.014 3.29 4.634 5.707 9.27 5.707 3.893 0 6.38-1.946 6.38-4.635 0-3.222-2.555-4.364-6.84-6.238l-2.35-1.008c-6.781-2.89-11.286-6.508-11.286-14.159 0-7.047 5.37-12.413 13.762-12.413 5.975 0 10.27 2.08 13.365 7.524l-7.317 4.699c-1.612-2.89-3.35-4.027-6.048-4.027-2.752 0-4.497 1.746-4.497 4.027 0 2.819 1.746 3.96 5.778 5.706l2.35 1.006c7.983 3.424 12.491 6.915 12.491 14.762 0 8.46-6.646 13.096-15.571 13.096-8.727 0-14.365-4.16-17.124-9.61zm-33.196.815c1.477 2.619 2.82 4.833 6.048 4.833 3.087 0 5.035-1.208 5.035-5.905V45.916h9.397v32.08c0 9.73-5.705 14.158-14.032 14.158-7.524 0-11.881-3.894-14.097-8.583z"/></svg>  
   ),
   python: (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="url(#a)" d="M49.64 0C24.254 0 25.839 11.009 25.839 11.009l.028 11.406h24.225v3.424H16.245S0 23.997 0 49.61c0 25.615 14.179 24.707 14.179 24.707h8.462V62.432s-.457-14.18 13.952-14.18H60.62s13.5.219 13.5-13.046V13.273S76.17 0 49.64 0M36.282 7.67a4.354 4.354 0 0 1 4.358 4.358 4.356 4.356 0 0 1-6.027 4.028 4.35 4.35 0 0 1-2.69-4.028 4.355 4.355 0 0 1 4.359-4.358"/><path fill="url(#b)" d="M50.36 99.48c25.387 0 23.802-11.009 23.802-11.009l-.028-11.405H49.908V73.64h33.847S100 75.485 100 49.869c0-25.615-14.179-24.706-14.179-24.706H77.36v11.886s.457 14.179-13.952 14.179H39.38s-13.5-.218-13.5 13.047v21.933S23.83 99.48 50.36 99.48m13.359-7.67a4.355 4.355 0 0 1-4.028-6.026 4.35 4.35 0 0 1 4.028-2.69 4.355 4.355 0 0 1 4.027 6.027 4.355 4.355 0 0 1-4.027 2.69"/><defs><linearGradient id="a" x1="9.61" x2="59.167" y1="8.948" y2="58.01" gradientUnits="userSpaceOnUse"><stop stop-color="#387EB8"/><stop offset="1" stop-color="#366994"/></linearGradient><linearGradient id="b" x1="40.028" x2="93.247" y1="40.453" y2="90.762" gradientUnits="userSpaceOnUse"><stop stop-color="#FFE052"/><stop offset="1" stop-color="#FFC331"/></linearGradient></defs></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="url(#a)" d="M49.64 0C24.254 0 25.839 11.009 25.839 11.009l.028 11.406h24.225v3.424H16.245S0 23.997 0 49.61c0 25.615 14.179 24.707 14.179 24.707h8.462V62.432s-.457-14.18 13.952-14.18H60.62s13.5.219 13.5-13.046V13.273S76.17 0 49.64 0M36.282 7.67a4.354 4.354 0 0 1 4.358 4.358 4.356 4.356 0 0 1-6.027 4.028 4.35 4.35 0 0 1-2.69-4.028 4.355 4.355 0 0 1 4.359-4.358"/><path fill="url(#b)" d="M50.36 99.48c25.387 0 23.802-11.009 23.802-11.009l-.028-11.405H49.908V73.64h33.847S100 75.485 100 49.869c0-25.615-14.179-24.706-14.179-24.706H77.36v11.886s.457 14.179-13.952 14.179H39.38s-13.5-.218-13.5 13.047v21.933S23.83 99.48 50.36 99.48m13.359-7.67a4.355 4.355 0 0 1-4.028-6.026 4.35 4.35 0 0 1 4.028-2.69 4.355 4.355 0 0 1 4.027 6.027 4.355 4.355 0 0 1-4.027 2.69"/><defs><linearGradient id="a" x1="9.61" x2="59.167" y1="8.948" y2="58.01" gradientUnits="userSpaceOnUse"><stop stopColor="#387EB8"/><stop offset="1" stopColor="#366994"/></linearGradient><linearGradient id="b" x1="40.028" x2="93.247" y1="40.453" y2="90.762" gradientUnits="userSpaceOnUse"><stop stopColor="#FFE052"/><stop offset="1" stopColor="#FFC331"/></linearGradient></defs></svg>
   )
 };
+
+const Projects = () => {
+  const { t } = useLanguage();
+
+  const featuredProjects = [
+    {
+      title: 'Eurovision Carousel',
+      description: t.proj_euro_desc,
+      tech: ['React', 'TypeScript', 'Tailwind'],
+      links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/Eurovision-Carousel' }],
+      image: escImg
+    },
+    {
+      title: 'ARGH!',
+      description: t.proj_argh_desc,
+      tech: ['Java'],
+      links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/-Argh-' }],
+      image: arghImg 
+    },
+    {
+      title: 'VideoGames-API',
+      description: t.proj_api_desc,
+      tech: ['Java', 'SpringBoot'],
+      links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/game_API' }],
+      image: videoAPI
+    }
+  ];
+
+  const otherProjects = [
+    {
+      title: 'Submarine-Animation',
+      description: t.proj_sub_desc,
+      tech: ['HTML', 'CSS'],
+      url: 'https://github.com/AdrianMedinaVidera/submarine_clone'
+    },
+    {
+      title: 'CS2 Tournament',
+      description: t.proj_cs2_desc,
+      tech: ['HTML', 'CSS', 'JS'],
+      url: 'https://github.com/AdrianMedinaVidera/pagCS2'
+    },
+    {
+      title: 'EDA + Dashboard',
+      description: t.proj_eda_desc,
+      tech: ['python'],
+      url: 'https://github.com/AdrianMedinaVidera/Project_EDA-Dashboard'
+    },
+    {
+      title: 'Videogames-Sales Analysis',
+      description: t.proj_sales_desc,
+      tech: [],
+      url: 'https://github.com/AdrianMedinaVidera/video-game-sales-analysis'
+    }
+  ];
 
   return (
     <section className="projects-section">
       <h2 className="section-title">
-        Proyectos 
+        {t.proj_title}
         <svg 
           className="icon-user-svg"
           viewBox="0 0 24 24" 
@@ -166,25 +173,30 @@ const techIcons: { [key: string]: React.ReactNode } = {
       
       <div className="small-projects-grid">
         {otherProjects.map((project, index) => (
-          <article className="small-card" key={index}>
-            <h4 className="small-card-title">{project.title}</h4>
-            <p className="small-card-description">{project.description}</p>
-            
-            <div className="tech-stack small-stack">
-              {project.tech.map((t, i) => (
-                <div key={i} className="tech-icon-container-small" title={t}>
-                  {techIcons[t] ? (
-                    <span className="tech-svg-wrapper-small">
-                      {techIcons[t]}
-                    </span>
-                  ) : (
-                    <span className="tech-text-fallback-small">{t}</span>
-                  )}
-                </div>
-              ))}
-            </div>
-            
-          </article>
+          <a
+            href={project.url}
+            className="small-card-link"
+            key={index}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <article className="small-card">
+              <h4 className="small-card-title">{project.title}</h4>
+              <p className="small-card-description">{project.description}</p>
+              <div className="tech-stack small-stack">
+                {project.tech.map((t, i) => (
+                  <div key={i} className="tech-icon-container-small" title={t}>
+                    {techIcons[t] ? (
+                      <span className="tech-svg-wrapper-small">{techIcons[t]}</span>
+                    ) : (
+                      <span className="tech-text-fallback-small">{t}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </article>
+          </a>
         ))}
       </div>
     </section>

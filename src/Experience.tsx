@@ -1,11 +1,19 @@
+import { useLanguage } from './LanguageContext';
 import './Experience.css';
 
 const Experience = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="experience-section">
       <h2 className="section-title">
-        Experiencia
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {t.exp_title}
+        <svg 
+          className="title-icon-svg" // Asegúrate de tener esta clase o ajustarla en CSS si la cambiaste
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path 
             fillRule="evenodd" 
             clipRule="evenodd" 
@@ -29,17 +37,17 @@ const Experience = () => {
 
       <div className="job-item">
         <h3 className="job-header">
-          <span className="job-role">Desarrollador Junior</span>
+          <span className="job-role">{t.exp_role}</span>
           <span className="separator">•</span>
-          <span className="job-company">ThePower - Arturo Soria</span>
+          <span className="job-company">{t.exp_company}</span>
         </h3>
 
         <ul className="job-list">
-          <li>Creación de componentes para el frontend.</li>
-          <li>Diseño de una interfaz gráfica de usuario desde cero y convirtiéndola en web.</li>
-          <li>Adaptar todo el diseño a cualquier pantalla, haciéndola responsiva.</li>
-          <li>Participación en el desarrollo, desde los requerimientos hasta la producción.</li>
-          <li>Colaboración con desarrolladores experimentados para encontrar las mejores soluciones</li>
+          <li>{t.exp_desc_1}</li>
+          <li>{t.exp_desc_2}</li>
+          <li>{t.exp_desc_3}</li>
+          <li>{t.exp_desc_4}</li>
+          <li>{t.exp_desc_5}</li>
         </ul>
       </div>
     </section>
