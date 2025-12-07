@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# 👨‍💻 Portafolio Web Personal - Adrián Medina
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¡Bienvenido al repositorio de mi portafolio personal! Este proyecto es una aplicación web moderna, minimalista y totalmente responsiva construida con **React**.
 
-Currently, two official plugins are available:
+El objetivo principal de este proyecto fue crear una interfaz limpia ("pixel-perfect") con una gran atención al detalle en la experiencia de usuario (UX/UI).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Características Principales
 
-## React Compiler
+Este portafolio no es solo estático, incluye varias funcionalidades dinámicas:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **🌗 Sistema de Temas (Dark/Light Mode):**
+    -   Cambio de tema instantáneo utilizando **CSS Variables**.
+    -   Persistencia visual coherente en todos los componentes.
+    -   Paleta de colores personalizada.
 
-## Expanding the ESLint configuration
+-   **🧠 Header Inteligente (Sticky Glassmorphism):**
+    -   El header es invisible al inicio y aparece con un efecto de desenfoque (*blur*) al hacer scroll.
+    -   Animaciones suaves de entrada para el avatar y el nombre.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **🖱️ Estela del Cursor Interactiva (Cursor Trail):**
+    -   Efecto visual de "cometa" que sigue al ratón.
+    -   Desarrollado con `useRef` y `requestAnimationFrame` para un rendimiento óptimo (60fps) sin afectar al renderizado de React.
+    -   **Botón Toggle:** Se puede activar o desactivar desde el header.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+-   **🎨 Iconografía Dinámica:**
+    -   Uso de SVGs optimizados.
+    -   Implementación de `currentColor` para que los iconos se adapten automáticamente al tema (claro/oscuro) y al color del texto.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+-   **📱 Diseño Responsivo:**
+    -   Adaptado a móviles, tablets y escritorio.
+    -   Layouts flexibles usando **CSS Grid** y **Flexbox**.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tecnologías Utilizadas
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+* **[React](https://reactjs.org/):** Librería principal para la construcción de la UI.
+* **CSS3:** Estilos modulares sin librerías externas pesadas (CSS puro + Variables).
+* **JavaScript (ES6+) / TypeScript:** Lógica de los componentes.
+* **SVGs:** Para toda la iconografía (Socials, Tecnologías, UI).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📂 Estructura del Proyecto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+El proyecto está organizado en componentes reutilizables para facilitar la escalabilidad:
+
+```bash
+src/
+├── assets/          # Imágenes estáticas (Avatar, Proyectos)
+├── components/
+│   ├── Header/      # Navegación y controles de tema/estela
+│   ├── Hero/        # Sección principal de presentación
+│   ├── Experience/  # Lista de experiencia laboral
+│   ├── Projects/    # Grid de proyectos (Destacados y Secundarios)
+│   ├── Contact/     # Redes sociales y copiado de email
+│   └── CursorTrail/ # Lógica de animación del cursor
+├── App.js           # Componente raíz y gestión de estado global
+└── App.css          # Variables globales y reset
