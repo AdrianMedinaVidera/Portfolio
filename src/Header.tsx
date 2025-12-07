@@ -31,7 +31,7 @@ const Header = ({ theme, toggleTheme, showTrail, toggleTrail }: HeaderProps) => 
         
         <div className="header-left">
           <img 
-            src="src/assets/Logo-Draw-nobg.webp" 
+            src="public/Logo-Draw-nobg.webp" 
             alt="Mini Avatar" 
             className="header-avatar"
           />

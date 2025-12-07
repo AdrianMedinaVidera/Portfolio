@@ -5,7 +5,7 @@ const Hero = () => {
     <section className="hero-container">
       <div className="avatar-wrapper">
         <img 
-          src="src/assets/Logo-Draw-nobg.webp" 
+          src="public/Logo-Draw-nobg.webp" 
           alt="Avatar" 
           className="avatar-img"
         />
