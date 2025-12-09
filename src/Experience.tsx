@@ -9,7 +9,7 @@ const Experience = () => {
       <h2 className="section-title">
         {t.exp_title}
         <svg 
-          className="title-icon-svg" // Asegúrate de tener esta clase o ajustarla en CSS si la cambiaste
+          className="title-icon-svg"
           viewBox="0 0 24 24" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
