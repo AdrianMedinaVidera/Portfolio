@@ -2,19 +2,15 @@ import { createContext, useState, useContext } from 'react';
 import type { ReactNode } from 'react';
 import { translations } from './Translations';
 
-// Definimos qué tipo de datos tiene nuestro contexto
 type LanguageContextType = {
   language: 'en' | 'es';
   toggleLanguage: () => void;
   t: typeof translations['en'];
 };
 
-// 1. Solución 'createContext': Le pasamos 'null' como valor inicial y definimos el tipo
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
-// 2. Solución 'children': Definimos que recibe props con children tipo ReactNode
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  // 3. Solución 'index type': Especificamos que el estado solo puede ser 'en' o 'es'
   const [language, setLanguage] = useState<'en' | 'es'>('en');
 
   const toggleLanguage = () => {
@@ -24,7 +20,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const t = translations[language];
 
   return (
-    // Aseguramos que el value coincida con el tipo definido arriba
     <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
       {children}
     </LanguageContext.Provider>
