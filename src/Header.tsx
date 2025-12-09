@@ -41,7 +41,6 @@ const Header = ({ theme, toggleTheme, showTrail, toggleTrail }: HeaderProps) => 
         </div>
 
         <div className="header-actions">
-          {/* 1. BOTÓN ESTELA */}
           <button 
               className={`icon-btn ${showTrail ? 'active' : ''}`} 
               onClick={toggleTrail} 
@@ -71,28 +70,21 @@ const Header = ({ theme, toggleTheme, showTrail, toggleTrail }: HeaderProps) => 
               </svg>
             </button>
 
-          {/* 2. BOTÓN IDIOMA (BANDERAS SVG LIMPIAS) */}
           <button 
             className="icon-btn" 
             onClick={toggleLanguage} 
             title={language === 'en' ? "Cambiar a Español" : "Switch to English"}
           >
             {language === 'en' ? (
-              // Si estamos en Inglés, mostramos bandera ESPAÑA para cambiar
               <svg className="header-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Parte Amarilla (con opacidad para dar contraste) */}
                 <path opacity="0.3" d="M2 32c0 5.9 1.7 11.4 4.6 16h50.7c2.9-4.6 4.6-10.1 4.6-16s-1.7-11.4-4.6-16H6.6C3.7 20.6 2 26.1 2 32z" fill="currentColor"/>
-                {/* Parte Roja (sólida) */}
                 <path d="M57.4 16C52.1 7.6 42.7 2 32 2S11.9 7.6 6.6 16h50.8z" fill="currentColor"/>
                 <path d="M6.6 48c5.3 8.4 14.7 14 25.4 14s20.1-5.6 25.4-14H6.6z" fill="currentColor"/>
-                {/* Detalles escudo simplificados */}
                 <path d="M14.3 28.6h7.2v8h-7.2z" fill="currentColor"/>
                 <path d="M21.5 28.6h7.2v8h-7.2z" fill="currentColor"/>
               </svg>
             ) : (
-              // Si estamos en Español, mostramos bandera INGLATERRA para cambiar
               <svg className="header-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Fondo Azul (con opacidad) */}
                 <path opacity="0.3" d="M22 60.3V46.5l-10.3 7.6c2.9 2.7 6.4 4.8 10.3 6.2" fill="currentColor"/>
                 <path opacity="0.3" d="M42 60.3c3.9-1.4 7.4-3.5 10.3-6.2L42 46.4v13.9" fill="currentColor"/>
                 <path opacity="0.3" d="M3.7 42c.3 1 .7 1.9 1.2 2.9L8.8 42H3.7" fill="currentColor"/>
@@ -102,7 +94,6 @@ const Header = ({ theme, toggleTheme, showTrail, toggleTrail }: HeaderProps) => 
                 <path opacity="0.3" d="M60.3 22c-.3-1-.7-1.9-1.2-2.9L55.2 22h5.1" fill="currentColor"/>
                 <path opacity="0.3" d="M8.8 22l-3.9-2.9c-.4 1-.8 1.9-1.2 2.9h5.1" fill="currentColor"/>
                 
-                {/* Cruz Roja Principal (sólida) */}
                 <path d="M23.5 38H2.6c.3 1.4.7 2.7 1.1 4h5.1l-3.9 2.9c.8 1.7 1.7 3.2 2.8 4.7L18 42h4v2l-11.7 8.6l1.4 1.4L22 46.5v13.8c1.3.5 2.6.8 4 1.1V38h-2.5" fill="currentColor"/>
                 <path d="M61.4 38H38v23.4c1.4-.3 2.7-.7 4-1.1V46.5L52.3 54c1.4-1.3 2.6-2.7 3.8-4.2L45.4 42h6.8l6.1 4.5c.3-.5.6-1.1.8-1.6L55.2 42h5.1c.4-1.3.8-2.6 1.1-4" fill="currentColor"/>
                 <path d="M40.5 26h20.8c-.3-1.4-.7-2.7-1.1-4h-5.1l3.9-2.9c-.8-1.7-1.7-3.2-2.8-4.7L46 22h-4v-2l11.7-8.6l-1.4-1.4L42 17.5V3.7c-1.3-.5-2.6-.8-4-1.1V26h2.5" fill="currentColor"/>
@@ -111,7 +102,6 @@ const Header = ({ theme, toggleTheme, showTrail, toggleTrail }: HeaderProps) => 
             )}
           </button>
 
-          {/* 3. BOTÓN TEMA */}
           <button className="icon-btn" onClick={toggleTheme} aria-label="Cambiar tema">
             {theme === 'light' ? (
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
