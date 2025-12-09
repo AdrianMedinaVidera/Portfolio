@@ -3,7 +3,7 @@ import { useLanguage } from './LanguageContext';
 import './Contact.css';
 
 const Contact = () => {
-  const { t } = useLanguage(); // <--- Hook
+  const { t } = useLanguage();
   const email = "adrianmedinavidera@gmail.com";
   const [copied, setCopied] = useState(false);
 
