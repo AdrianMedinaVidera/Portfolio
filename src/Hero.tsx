@@ -1,9 +1,9 @@
-import { useLanguage } from './LanguageContext'; // <--- Importamos el hook
+import { useLanguage } from './LanguageContext';
 import './Hero.css';
 import myAvatar from './assets/Logo-Draw-nobg.webp';
 
 const Hero = () => {
-  const { t } = useLanguage(); // <--- Extraemos las traducciones
+  const { t } = useLanguage();
 
   return (
     <section className="hero-container">
@@ -18,12 +18,10 @@ const Hero = () => {
       <div className="hero-content">
         <h1 className="hero-name">Adrián Medina</h1>
         
-        {/* TEXTO TRADUCIDO */}
         <p className="hero-description">
           {t.hero_desc}
         </p>
         
-        {/* TEXTO TRADUCIDO */}
         <a className="status-button" href='/cv.pdf' download="Adrian_Medina_CV.pdf">
           {t.hero_btn}
           <svg 
