@@ -4,6 +4,8 @@ import Hero from './Hero';
 import Experience from './Experience';
 import Projects from './Projects';
 import Contact from './Contact';
+import AboutMe from './AboutMe';
+import Education from './Education';
 import './App.css';
 import CursorTrail from './CursorTrail';
 
@@ -38,9 +40,15 @@ function App() {
       <main className="container">
         <div style={{ marginTop: '5rem' }}></div> 
         <Hero />
+
+        <div className="section-divider"></div>
+        <AboutMe />
         
         <div className="section-divider"></div>
         <Experience />
+
+        <div className="section-divider"></div>
+        <Education />
 
         <div className="section-divider"></div>
         <Projects />

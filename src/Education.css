@@ -1,0 +1,70 @@
+/* Education.css */
+.education-section {
+    width: 100%;
+    padding-bottom: 3rem;
+}
+
+.education-title svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+}
+
+.education-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-top: 1px dotted var(--border);
+    padding-top: 3rem;
+}
+
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.education-card {
+    /* Optional: Card style or just clean text like the image */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.edu-degree {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.edu-school {
+    font-size: 1rem;
+    font-weight: 600; /* Bold part of the school line */
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.edu-details-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.edu-detail-item {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.school-name-bold {
+    font-weight: 800;
+    font-style: normal;
+    color: var(--text-primary);
+}

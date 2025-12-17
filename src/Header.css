@@ -24,7 +24,7 @@
 
 .header-inner {
   width: 100%;
-  max-width: 800px; /* Alineado con tu contenido */
+  max-width: 600px !important; /* Alineado con tu contenido */
   padding: 0 2rem;
   margin: 0 auto; /* Centrado horizontal */
   display: flex;

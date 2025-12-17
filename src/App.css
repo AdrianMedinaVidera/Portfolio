@@ -55,7 +55,7 @@ body {
 
 .container {
   width: 100%;
-  max-width: 800px; /* Ancho típico de lectura/portfolio */
+  max-width: 1000px !important; /* Reduced width per user request */
   padding: 2rem;
 }
 

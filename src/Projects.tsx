@@ -37,11 +37,13 @@ const techIcons: Record<string, React.ReactNode> = {
 
 const Projects = () => {
   const { t } = useLanguage();
+  const [selectedProject, setSelectedProject] = React.useState<any>(null);
 
   const featuredProjects = [
     {
       title: 'Eurovision Carousel',
       description: t.proj_euro_desc,
+      learned: t.proj_learned_euro,
       tech: ['React', 'TypeScript', 'Tailwind'],
       links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/Eurovision-Carousel' }],
       image: escImg
@@ -49,6 +51,7 @@ const Projects = () => {
     {
       title: 'ARGH!',
       description: t.proj_argh_desc,
+      learned: t.proj_learned_argh,
       tech: ['Java'],
       links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/-Argh-' }],
       image: arghImg 
@@ -56,6 +59,7 @@ const Projects = () => {
     {
       title: 'VideoGames-API',
       description: t.proj_api_desc,
+      learned: t.proj_learned_api,
       tech: ['Java', 'SpringBoot'],
       links: [{ text: 'Live', url: 'https://github.com/AdrianMedinaVidera/game_API' }],
       image: videoAPI
@@ -89,6 +93,14 @@ const Projects = () => {
     }
   ];
 
+  const handleCardClick = (project: any) => {
+    setSelectedProject(project);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
+
   return (
     <section className="projects-section">
       <h2 className="section-title">
@@ -113,7 +125,7 @@ const Projects = () => {
 
       <div className="featured-list">
         {featuredProjects.map((project, index) => (
-          <article className="featured-card" key={index}>
+          <article className="featured-card" key={index} onClick={() => handleCardClick(project)}>
             <div className="project-image-container">
               <img 
                 src={project.image} 
@@ -135,34 +147,6 @@ const Projects = () => {
                       <span className="tech-text-fallback">{t}</span>
                     )}
                   </div>
-                ))}
-              </div>
-
-              <div className="project-buttons">
-                {project.links.map((link, i) => (
-                  <a href={link.url} className="btn-project" key={i} target="_blank"> 
-                    <svg 
-                      className="icon-link-svg"
-                      viewBox="0 0 24 24" 
-                      fill="none" 
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g opacity="0.5"> 
-                        <path 
-                          d="M8 6.75C5.10051 6.75 2.75 9.10051 2.75 12C2.75 14.8995 5.10051 17.25 8 17.25H9C9.41421 17.25 9.75 17.5858 9.75 18C9.75 18.4142 9.41421 18.75 9 18.75H8C4.27208 18.75 1.25 15.7279 1.25 12C1.25 8.27208 4.27208 5.25 8 5.25H9C9.41421 5.25 9.75 5.58579 9.75 6C9.75 6.41421 9.41421 6.75 9 6.75H8Z" 
-                          fill="currentColor"
-                        />
-                        <path 
-                          d="M15 5.25C14.5858 5.25 14.25 5.58579 14.25 6C14.25 6.41421 14.5858 6.75 15 6.75H16C18.8995 6.75 21.25 9.10051 21.25 12C21.25 14.8995 18.8995 17.25 16 17.25H15C14.5858 17.25 14.25 17.5858 14.25 18C14.25 18.4142 14.5858 18.75 15 18.75H16C19.7279 18.75 22.75 15.7279 22.75 12C22.75 8.27208 19.7279 5.25 16 5.25H15Z" 
-                          fill="currentColor"
-                        /> 
-                      </g> 
-                      <path 
-                        d="M8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H15C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H9C8.58579 12.75 8.25 12.4142 8.25 12Z" 
-                        fill="currentColor"
-                      /> 
-                    </svg>
-                  </a>
                 ))}
               </div>
             </div>
@@ -198,6 +182,79 @@ const Projects = () => {
           </a>
         ))}
       </div>
+
+      {selectedProject && (
+        <div className="project-modal-overlay" onClick={closeModal}>
+          <div className="project-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={closeModal}>&times;</button>
+            
+            <div className="modal-header">
+              <h3 className="modal-title">{selectedProject.title}</h3>
+            </div>
+
+             <div className="modal-img-container">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className="modal-img" 
+                />
+            </div>
+
+            <div className="modal-body">
+              <div>
+                <p className="modal-text">{selectedProject.description}</p>
+              </div>
+
+              <div>
+                 <h4 className="modal-section-title">{t.modal_learned_title}</h4>
+                 <p className="modal-text">{selectedProject.learned}</p>
+              </div>
+
+              <div className="tech-stack">
+                {selectedProject.tech.map((t: string, i: number) => (
+                    <div key={i} className="tech-icon-container" title={t}>
+                    {techIcons[t] ? (
+                      <span className="tech-svg-wrapper">{techIcons[t]}</span>
+                    ) : (
+                      <span className="tech-text-fallback">{t}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="modal-footer">
+               {selectedProject.links && selectedProject.links[0] && (
+                  <a href={selectedProject.links[0].url} className="modal-visit-btn" target="_blank" rel="noopener noreferrer">
+                    {t.modal_visit_btn}
+                    <svg 
+                      className="icon-link-svg"
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg"
+                      style={{ width: '20px', height: '20px' }}
+                    >
+                      <g opacity="0.5"> 
+                        <path 
+                          d="M8 6.75C5.10051 6.75 2.75 9.10051 2.75 12C2.75 14.8995 5.10051 17.25 8 17.25H9C9.41421 17.25 9.75 17.5858 9.75 18C9.75 18.4142 9.41421 18.75 9 18.75H8C4.27208 18.75 1.25 15.7279 1.25 12C1.25 8.27208 4.27208 5.25 8 5.25H9C9.41421 5.25 9.75 5.58579 9.75 6C9.75 6.41421 9.41421 6.75 9 6.75H8Z" 
+                          fill="currentColor"
+                        />
+                        <path 
+                          d="M15 5.25C14.5858 5.25 14.25 5.58579 14.25 6C14.25 6.41421 14.5858 6.75 15 6.75H16C18.8995 6.75 21.25 9.10051 21.25 12C21.25 14.8995 18.8995 17.25 16 17.25H15C14.5858 17.25 14.25 17.5858 14.25 18C14.25 18.4142 14.5858 18.75 15 18.75H16C19.7279 18.75 22.75 15.7279 22.75 12C22.75 8.27208 19.7279 5.25 16 5.25H15Z" 
+                          fill="currentColor"
+                        /> 
+                      </g> 
+                      <path 
+                        d="M8.25 12C8.25 11.5858 8.58579 11.25 9 11.25H15C15.4142 11.25 15.75 11.5858 15.75 12C15.75 12.4142 15.4142 12.75 15 12.75H9C8.58579 12.75 8.25 12.4142 8.25 12Z" 
+                        fill="currentColor"
+                      /> 
+                    </svg>
+                  </a>
+               )}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

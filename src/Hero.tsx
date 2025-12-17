@@ -1,6 +1,7 @@
 import { useLanguage } from './LanguageContext';
 import './Hero.css';
 import myAvatar from './assets/Logo-Draw-nobg.webp';
+import cvFile from './assets/cv.pdf';
 
 const Hero = () => {
   const { t } = useLanguage();
@@ -22,7 +23,7 @@ const Hero = () => {
           {t.hero_desc}
         </p>
         
-        <a className="status-button" href='../assets/cv.pdf' download="Adrian_Medina_CV.pdf">
+        <a className="status-button" href={cvFile} download="Adrian_Medina_CV.pdf">
           {t.hero_btn}
           <svg 
             className="icon-download-svg"
