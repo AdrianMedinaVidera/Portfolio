@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root {
-  /* Variables para Modo Claro (por defecto) */
   --bg-color: #f0f2f5;
   --bg-reverse: rgb(31 41 55);
   --text-reverse: #ffffff;
@@ -11,7 +10,7 @@
   --text-primary: rgb(129 140 248/var(--tw-text-opacity));
   --border: #1f293779;
   --text-secondary: #6b7280;
-  --accent-green: #10b981; /* Verde brillante similar al botón */
+  --accent-green: #10b981;
   --accent-text: #ffffff;
   --avatar-border: #1f26307b;
   --shadow: #00000040;
@@ -55,11 +54,10 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1000px !important; /* Reduced width per user request */
+  max-width: 1000px !important; 
   padding: 2rem;
 }
 
-/* Toggle Button en la esquina */
 .theme-toggle {
   background: none;
   border: none;

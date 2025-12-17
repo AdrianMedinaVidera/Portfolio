@@ -29,7 +29,6 @@
 }
 
 .education-card {
-    /* Optional: Card style or just clean text like the image */
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -43,7 +42,7 @@
 
 .edu-school {
     font-size: 1rem;
-    font-weight: 600; /* Bold part of the school line */
+    font-weight: 600;
     color: var(--text-secondary);
     font-style: italic;
     margin-bottom: 0.5rem;

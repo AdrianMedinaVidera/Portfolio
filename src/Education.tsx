@@ -17,9 +17,6 @@ const Education = () => {
         }
     ];
 
-    // Helper to separate school name from date if needed, or just render as is. 
-    // The translation string is "Prometeo FP by thePower | 2024 - ..."
-    // We can try to format the part before | as bold.
     const renderSchool = (text: string) => {
         const parts = text.split('|');
         if (parts.length > 1) {

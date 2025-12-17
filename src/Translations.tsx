@@ -144,7 +144,7 @@ export const translations = {
     proj_euro_desc:
       "Aplicación web para mostrar un carrusel interactivo con información sobre Eurovisión.",
     proj_argh_desc:
-      "Juego de Rol íntegro de terminal o consola de comandos con Java Vanilla.",
+      "Juego de rol desarrollado íntegramente para la terminal usando Java puro.",
     proj_api_desc: "API REST de videojuegos desarrollada en Java-SpringBoot.",
     // Other
     proj_sub_desc: "Una animación de un submarino programada con CSS.",
